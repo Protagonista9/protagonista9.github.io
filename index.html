@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Portfólio de projetos de back-end e desenvolvimento web.">
+  <title>Portfólio de Projetos | Desenvolvedor Back-End</title>
+  <style>
+    :root {
+      --pink-bg: #fff4f6;
+      --pink-border: #f2dfe5;
+      --green: #2ac56b;
+      --green-dark: #20ad5b;
+      --text: #171316;
+      --muted: #666066;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      padding: 18px 14px 22px;
+      background: var(--blue-bg);
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .page {
+      width: min(100%, 700px);
+      margin: 0 auto;
+    }
+
+    .developer-tag {
+      width: fit-content;
+      max-width: 100%;
+      margin: 0 auto 22px;
+      padding: 7px 13px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      border: 1px solid #eadfe2;
+      border-radius: 9px;
+      background: rgba(255,255,255,.88);
+      box-shadow: 0 2px 8px rgba(66, 34, 45, .07);
+      font-size: 11px;
+      text-align: center;
+    }
+
+    .developer-tag .person-icon { font-size: 14px; }
+    .developer-tag strong { font-size: 10px; letter-spacing: .2px; }
+
+    header { text-align: center; margin-bottom: 17px; }
+
+    h1 {
+      margin: 0 0 8px;
+      font-size: clamp(24px, 4vw, 31px);
+      line-height: 1.1;
+      font-weight: 800;
+    }
+
+    .subtitle {
+      margin: 0;
+      color: #353035;
+      font-size: 13px;
+    }
+
+    .project-card {
+      width: 100%;
+      padding: 17px 18px 16px;
+      border: 1px solid var(--pink-border);
+      border-radius: 16px;
+      background: #fff;
+      box-shadow: 0 7px 22px rgba(87, 46, 61, .09);
+    }
+
+    .project-heading { text-align: center; margin-bottom: 17px; }
+    .eyebrow { margin: 0 0 4px; font-size: 11px; font-weight: 700; }
+    h2 { margin: 0; font-size: clamp(18px, 3vw, 22px); line-height: 1.2; }
+
+    .project-content {
+      display: grid;
+      grid-template-columns: minmax(155px, .9fr) minmax(0, 1.4fr);
+      gap: 18px;
+      align-items: start;
+    }
+
+    .section-label {
+      display: block;
+      margin: 0 0 7px;
+      font-size: 10px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .15px;
+    }
+
+    .preview {
+      min-height: 168px;
+      padding: 12px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: 1px solid #eadde1;
+      border-radius: 10px;
+      background: #fff3f6;
+    }
+
+    /* Miniatura ilustrativa do sistema; pode ser trocada por uma captura de tela real. */
+    .mini-window {
+      width: 82%;
+      min-height: 145px;
+      padding: 10px 9px;
+      border: 1px solid #e4dadd;
+      border-radius: 4px;
+      background: #fff;
+      box-shadow: 0 2px 7px rgba(0,0,0,.08);
+      font-size: 7px;
+      color: #5e565b;
+    }
+    .mini-title { margin: 0 0 8px; text-align: center; font-weight: 700; color: #443a40; font-size: 8px; }
+    .mini-line { height: 7px; margin: 5px 0; border: 1px solid #e6dfe2; border-radius: 2px; background: #faf8f9; }
+    .mini-line.short { width: 62%; }
+    .mini-button { margin-top: 11px; padding: 5px 3px; border-radius: 3px; background: var(--green); color: white; text-align: center; font-size: 6px; font-weight: bold; }
+
+    .details { min-width: 0; }
+    .feature-list { margin: 0 0 12px; padding-left: 17px; color: #494249; font-size: 12px; line-height: 1.65; }
+    .tech-list { margin: 0 0 12px; color: #494249; font-size: 12px; line-height: 1.55; }
+
+    .link-field {
+      display: block;
+      width: 100%;
+      margin: 0 0 10px;
+      padding: 8px 10px;
+      overflow-wrap: anywhere;
+      border: 1px solid #e6dce0;
+      border-radius: 8px;
+      background: #fff8fa;
+      color: #858087;
+      font-size: 11px;
+      text-decoration: none;
+    }
+    .link-field.github { background: #e5e5e5; border-color: #d0d0d0; }
+    .link-label { display: block; margin: 0 0 5px; font-size: 10px; font-weight: 800; text-transform: uppercase; }
+
+    .actions {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 15px;
+    }
+
+    .button {
+      min-height: 42px;
+      padding: 11px 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 10px;
+      background: var(--green);
+      box-shadow: 0 3px 7px rgba(32, 173, 91, .17);
+      color: #fff;
+      font-size: 11px;
+      font-weight: 800;
+      text-align: center;
+      text-decoration: none;
+      transition: background .18s ease, transform .18s ease;
+    }
+    .button:hover { background: var(--green-dark); transform: translateY(-1px); }
+    .button:focus-visible { outline: 3px solid #177c40; outline-offset: 3px; }
+
+    footer { margin-top: 13px; text-align: right; color: #51494f; font-size: 10px; }
+
+    @media (max-width: 540px) {
+      body { padding: 14px 11px 20px; }
+      .developer-tag { margin-bottom: 19px; padding: 7px 9px; font-size: 10px; }
+      header { margin-bottom: 15px; }
+      .project-card { padding: 16px 13px 13px; }
+      .project-content { grid-template-columns: 1fr; gap: 15px; }
+      .preview { min-height: 190px; }
+      .mini-window { width: min(75%, 250px); min-height: 160px; }
+      .feature-list, .tech-list { font-size: 13px; }
+      .actions { grid-template-columns: 1fr; gap: 9px; }
+      .button { min-height: 44px; font-size: 12px; }
+      footer { text-align: center; line-height: 1.5; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="developer-tag">
+      <span class="person-icon" aria-hidden="true">♟</span>
+      <span><strong>RENNER RICARDO</strong> | Back-End (PHP, SQL) | Técnico em Desenvolvimento de Sistemas</span>
+    </div>
+
+    <header>
+      <h1>PORTFÓLIO DE PROJETOS</h1>
+      <p class="subtitle">Confira meus projetos práticos de back-end e desenvolvimento web.</p>
+    </header>
+
+    <section class="project-card" aria-labelledby="project-title">
+      <div class="project-heading">
+        <p class="eyebrow">PROJETO EM DESTAQUE:</p>
+        <h2 id="project-title">Sistema de Pedidos Personalizados</h2>
+      </div>
+
+      <div class="project-content">
+        <div>
+          <span class="section-label">Projeto de origem: <a href="#live-link" style="color:#737078">[site]</a></span>
+          <div class="preview" role="img" aria-label="Prévia ilustrativa de um formulário de pedidos personalizados">
+            <div class="mini-window" aria-hidden="true">
+              <p class="mini-title">Pedido de Topper</p>
+              <div>Nome para o pedido</div><div class="mini-line"></div>
+              <div>Nome no topper</div><div class="mini-line"></div>
+              <div>Idade</div><div class="mini-line short"></div>
+              <div>Data de entrega</div><div class="mini-line"></div>
+              <div class="mini-button">ENVIAR PEDIDO</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="details">
+          <span class="section-label">Funcionalidades back-end:</span>
+          <ul class="feature-list">
+            <li>Validação em PHP</li>
+            <li>Upload de arquivos</li>
+            <li>Lógica de envio de dados</li>
+            <li>Integração via API WhatsApp</li>
+          </ul>
+
+          <span class="section-label">Tecnologias utilizadas:</span>
+          <p class="tech-list">PHP 8, MySQL, HTML5, CSS3, JavaScript</p>
+
+          <span class="link-label">Demonstração ao vivo:</span>
+          <a class="link-field" id="live-link" href="https://protagonista9.github.io/pedidos-topper/" target="_blank" rel="noopener noreferrer">https://protagonista9.github.io/pedidos-topper/</a>
+
+          <span class="link-label">Código-fonte (GitHub):</span>
+          <a class="link-field github" id="github-link" href="https://github.com/Protagonista9/pedidos-topper" target="_blank" rel="noopener noreferrer">https://github.com/Protagonista9/pedidos-topper</a>
+        </div>
+      </div>
+
+      <div class="actions">
+        <a class="button" href="https://protagonista9.github.io/pedidos-topper/" target="_blank" rel="noopener noreferrer">VISITAR PROJETO AO VIVO</a>
+        <a class="button" href="https://github.com/Protagonista9/pedidos-topper" target="_blank" rel="noopener noreferrer">VER CÓDIGO NO GITHUB</a>
+      </div>
+    </section>
+
+    <footer>Amostra do código-fonte em HTML/CSS disponível para análise.</footer>
+  </main>
+</body>
+</html>
