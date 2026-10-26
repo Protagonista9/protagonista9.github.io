@@ -79,6 +79,45 @@
     .eyebrow { margin: 0 0 4px; font-size: 11px; font-weight: 700; }
     h2 { margin: 0; font-size: clamp(18px, 3vw, 22px); line-height: 1.2; }
 
+    .project-description {
+      margin: 0 0 15px;
+      color: #494249;
+      font-size: 12px;
+      line-height: 1.6;
+    }
+
+    .more-details-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 0 15px;
+      padding: 8px 13px;
+      border: 1px solid #d0d0d0;
+      border-radius: 8px;
+      background: #f2f2f2;
+      color: #333;
+      font-size: 11px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background .18s ease;
+    }
+
+    .more-details-button:hover { background: #e5e5e5; }
+    .more-details-button:focus-visible { outline: 3px solid #777; outline-offset: 2px; }
+
+    .detailed-description {
+      margin: 0 0 16px;
+      padding: 12px 13px;
+      border: 1px solid #e1e1e1;
+      border-radius: 9px;
+      background: #f7f7f7;
+      color: #494249;
+      font-size: 12px;
+      line-height: 1.65;
+    }
+
+    .detailed-description[hidden] { display: none; }
+
     .project-content {
       display: grid;
       grid-template-columns: minmax(155px, .9fr) minmax(0, 1.4fr);
@@ -206,7 +245,6 @@
 
       <div class="project-content">
         <div>
-          <span class="section-label">Projeto de origem: <a href="#live-link" style="color:#737078">[site]</a></span>
           <div class="preview" role="img" aria-label="Prévia ilustrativa de um formulário de pedidos personalizados">
             <div class="mini-window" aria-hidden="true">
               <p class="mini-title">Pedido de Topper</p>
@@ -229,13 +267,42 @@
           </ul>
 
           <span class="section-label">Tecnologias utilizadas:</span>
-          <p class="tech-list">PHP 8, MySQL, HTML5, CSS3, JavaScript</p>
+          <p class="tech-list">JavaScript | HTML5 | CSS3 | Google Apps Script | Google Sheets API | Google Drive API </p>
 
-          <span class="link-label">Demonstração ao vivo:</span>
-          <a class="link-field" id="live-link" href="https://protagonista9.github.io/pedidos-topper/" target="_blank" rel="noopener noreferrer">https://protagonista9.github.io/pedidos-topper/</a>
+          <!-- DESCRIÇÃO BREVE: substitua o texto abaixo pela descrição curta do seu sistema. -->
+          <span class="section-label">SOBRE O PROJETO:</span>
+          <p class="tech-list">Painel de Controle e Automação para Negócios de Papelaria Personalizada
+            Sistema inteligente criado para organizar pedidos de topos de bolo e personalizados. 
+            Ele automatiza o controle de prazos de entrega, organiza os arquivos de cada cliente automaticamente na nuvem 
+            e evita que qualquer pedido passe do prazo, dando total controle e profissionalismo para a produção.
+          </p>
 
-          <span class="link-label">Código-fonte (GitHub):</span>
-          <a class="link-field github" id="github-link" href="https://github.com/Protagonista9/pedidos-topper" target="_blank" rel="noopener noreferrer">https://github.com/Protagonista9/pedidos-topper</a>
+          <button class="more-details-button" type="button"
+            aria-expanded="false" aria-controls="detailed-description" id="more-details-button">
+            Mais detalhes
+          </button>
+
+          <!-- DESCRIÇÃO DETALHADA: substitua o texto abaixo pela explicação completa do projeto. -->
+          <div class="detailed-description" id="detailed-description" hidden>
+            Sistema de Gestão e Automação para Papelaria e Brindes Personalizados
+            O Problema
+
+            Gerenciar pedidos de papelaria criativa (como topos de bolo, lembrancinhas e itens de festa) no papel ou de forma manual gera muita dor de cabeça: prazos apertados, risco de esquecer detalhes passados pelo cliente no WhatsApp e bagunça na hora de achar os arquivos e fotos para impressão.
+
+            A Solução
+
+            Desenvolvi um sistema web sob medida para centralizar todo o fluxo de trabalho de um negócio de personalizados. Com ele, o processo funciona de forma organizada e automatizada:
+
+            Organização Automática: Assim que um pedido entra, o sistema cria pastas separadas na nuvem para cada cliente, salvando as referências e arquivos de forma organizada, sem risco de perder nada.
+
+            Controle Inteligente de Prazos: O sistema calcula e avisa os prazos de produção com base na data da festa do cliente, ajudando a cumprir todas as entregas sem correria de última hora.
+
+            Central de Pedidos Prática: Reúne todas as informações importantes em um só lugar (nome, tema, data da festa, observações e arquivos), agilizando a hora de produzir.
+
+            O Benefício para o Seu Negócio
+
+            Menos tempo perdido procurando arquivos ou calculando prazos na ponta do lápis, e mais tempo focado na criação e nas vendas, passando muito mais profissionalismo para os seus clientes.
+          </div>
         </div>
       </div>
 
@@ -247,5 +314,17 @@
 
     <footer>Amostra do código-fonte em HTML/CSS disponível para análise.</footer>
   </main>
+
+  <script>
+    const moreDetailsButton = document.getElementById('more-details-button');
+    const detailedDescription = document.getElementById('detailed-description');
+
+    moreDetailsButton.addEventListener('click', () => {
+      const isExpanded = moreDetailsButton.getAttribute('aria-expanded') === 'true';
+      moreDetailsButton.setAttribute('aria-expanded', String(!isExpanded));
+      detailedDescription.hidden = isExpanded;
+      moreDetailsButton.textContent = isExpanded ? 'Mais detalhes' : 'Mostrar menos';
+    });
+  </script>
 </body>
 </html>
